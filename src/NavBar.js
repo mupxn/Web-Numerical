@@ -35,7 +35,6 @@ export const NavBar = ()=>{
                     </NavDropdown>
                     <NavDropdown title="Regression" id="navbarScrollingDropdown">
                         <NavDropdown.Item href="/Linear">Linear</NavDropdown.Item>
-                        <NavDropdown.Item href="/Quadratic">Quadratic</NavDropdown.Item>
                         <NavDropdown.Item href="/MultipleLinear">MultipleLinear</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

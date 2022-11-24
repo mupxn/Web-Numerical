@@ -16,6 +16,7 @@ import Jacobi from './Element/Jacobi';
 import Conjugate from './Element/Conjugate';
 import Lagrange from './Element/Lagrange';
 import Linear from './Element/Linear';
+import Polynomial from './Element/Polynomial';
 
 
 function App() {
@@ -38,9 +39,8 @@ function App() {
         <Route path="/GaussSeidel" element={<GaussSeidel/>}/>
         <Route path="/Conjugate" element={<Conjugate/>}/>
         <Route path="/Lagrange" element={<Lagrange/>}/>
-        <Route path="/Lagrange" element={<Lagrange/>}/>
-        <Route path="/Lagrange" element={<Linear/>}/>
-        
+        <Route path="/Linear" element={<Linear/>}/>
+        <Route path="/MultipleLinear" element={<Polynomial/>}/>
       </Routes>
       </BrowserRouter>
     </div>

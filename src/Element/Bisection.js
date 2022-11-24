@@ -1,24 +1,34 @@
 import { Component, React } from "react";
-import { Button, Container, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
-import Windows from "./window";
+import * as ReactDOM from "react-dom";
+import ApexChart from "./ApexChart";
 
-var ans='';
+
+var Xm = [];
+var Xl = [];
+var Xr = [];
+var Xloop = [];
+
 class Bisection extends Component{
     constructor(){
-        super()
+        super();
     }
     componentDidMount(){
 
     }
     getValue(){
+        const showchart = ReactDOM.createRoot(document.getElementById("showchart"));
         var equation = document.getElementById("equation").value;
-        var XL = document.getElementById("XL").value;
-        var XR = document.getElementById("XR").value;
-        var xl = XL
-        var xr = XR
+        var xl = document.getElementById("XL").value;
+        var xr = document.getElementById("XR").value;
+        var i=0;
         do{
+            Xr.push(xr);
+            Xl.push(xl);
+            Xloop.push(i++);
             var xm = (Number(xl)+Number(xr))/2
+            Xm.push(xm);
             var x=xm
             var fxm = eval(equation)
             var x=xr
@@ -32,38 +42,41 @@ class Bisection extends Component{
                 xr=xm
             }
         }while(error >= 0.000001 || error <= -0.0000001)
-        var ans = xm
-        //console.log(fxm);
-        console.log(ans);
+        var ans = xm    
+        showchart.render(
+            <div>
+              <ApexChart data={{xm:Xm, xl:Xl,xr: Xr,xloop: Xloop}} />
+            </div>
+        );
         document.getElementById("showans").innerHTML=ans;
     }
+    
     render(){
         return(
-            <Container>
+            <div>
                 <br/>
-                <h3>Bisection</h3>
+                <h3>Bisection Method</h3>
                 <br/>
                 <Form>
                     <Form.Group className="mb-3">
-                        <Form.Label>
-                            input
-                        </Form.Label>
                         <div>
-                            <Form.Control id="equation" type="text" placeholder="Equation" style={{width:"20%",margin: "0 auto"}}></Form.Control>                        
+                            <Form.Control id="equation" type="text" placeholder="f(x)" style={{width:"20%",margin: "0 auto"}}></Form.Control>                        
                             <Form.Control id="XL" type="number" placeholder="XL" style={{width:"20%" ,margin: "0 auto"} }></Form.Control>
-                            <Form.Control id="XR" type="number" placeholder="XR" style={{width:"20%" ,margin: "0 auto"} }></Form.Control>
-                            
+                            <Form.Control id="XR" type="number" placeholder="XR" style={{width:"20%" ,margin: "0 auto"} }></Form.Control>                           
                         </div>
-                        <Button onClick={this.getValue} variant="danger">
-                            summit
-                        </Button>
+                        <Button onClick={this.getValue} variant="success" style={{marginTop:"20px"}}>Summit</Button>
                     </Form.Group>
                 </Form>
                 <br/>
-                <div id="showans"></div>
-            </Container>
+                <div>
+                    <h4>Result is:</h4>
+                    <div id="showans"></div>
+                </div>
+                <div id="showchart">
+                    <ApexChart data={{xm:Xm, xl:Xl,xr: Xr,xloop: Xloop}} />
+                </div>
+            </div>
         );
     }
-
 }
-export default Bisection
+export default Bisection;
