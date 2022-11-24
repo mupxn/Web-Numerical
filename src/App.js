@@ -9,15 +9,13 @@ import NewtonRaphson from './Element/NewtonRaphson';
 import Secant from './Element/Secant';
 import Carmer from './Element/Carmer';
 import GaussElimination from './Element/GaussElimination';
-import LU from './Element/LU';
 import MatrixInversion from './Element/MatrixInversion';
-import GaussJordan from './Element/GaussJordan';
 import Cholesky from './Element/Cholesky';
 import GaussSeidel from './Element/GaussSeidel';
 import Jacobi from './Element/Jacobi';
 import Conjugate from './Element/Conjugate';
 import Lagrange from './Element/Lagrange';
-import Linear from './Element/linear';
+import Linear from './Element/Linear';
 
 
 function App() {
@@ -40,7 +38,9 @@ function App() {
         <Route path="/GaussSeidel" element={<GaussSeidel/>}/>
         <Route path="/Conjugate" element={<Conjugate/>}/>
         <Route path="/Lagrange" element={<Lagrange/>}/>
-        <Route path="/Linear" element={<Linear/>}/>
+        <Route path="/Lagrange" element={<Lagrange/>}/>
+        <Route path="/Lagrange" element={<Linear/>}/>
+        
       </Routes>
       </BrowserRouter>
     </div>
